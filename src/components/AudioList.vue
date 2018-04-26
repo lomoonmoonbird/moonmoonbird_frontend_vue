@@ -7,7 +7,7 @@
             <template v-for="(item, index) in easehearts">
               <aplayer :autoplay="false" :key="index" :music="{
                     title: item.title,
-                    artist: item.title,
+                    artist: item.author,
                     src: item.url,
                     pic: ''
                 }"
