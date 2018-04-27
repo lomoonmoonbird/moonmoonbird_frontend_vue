@@ -83,7 +83,7 @@
       </v-container>
       
     </v-content>
-    <v-footer height="auto" class="bo grey darken-3">
+    <v-footer height="auto" class="bo blue darken-3">
         <v-layout row wrap justify-center>
           <!-- <v-btn
             color="white"
@@ -94,7 +94,7 @@
             {{ link }}
           </v-btn> -->
           <v-flex xs12 py-3 text-xs-center white--text>
-            &copy;2016 — 2018 <strong>guanling.com</strong>
+            &copy;2016 — 2018 <strong>psyguanling.com</strong>
           </v-flex>
         </v-layout>
       </v-footer> 
