@@ -14,16 +14,10 @@
         return {
           items: [
             {
-              src: 'http://f.hiphotos.baidu.com/image/pic/item/3ac79f3df8dcd1007fde3f4e7e8b4710b9122f1b.jpg'
+              src: 'http://7xilr2.com1.z0.glb.clouddn.com//guanling/book/WechatIMG88.jpeg'
             },
             {
-              src: 'http://f.hiphotos.baidu.com/image/pic/item/3ac79f3df8dcd1007fde3f4e7e8b4710b9122f1b.jpg'
-            },
-            {
-              src: 'http://f.hiphotos.baidu.com/image/pic/item/3ac79f3df8dcd1007fde3f4e7e8b4710b9122f1b.jpg'
-            },
-            {
-              src: 'http://f.hiphotos.baidu.com/image/pic/item/3ac79f3df8dcd1007fde3f4e7e8b4710b9122f1b.jpg'
+              src: 'http://7xilr2.com1.z0.glb.clouddn.com//guanling/book/b2.jpeg'
             }
           ]
         }

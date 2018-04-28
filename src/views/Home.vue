@@ -1,7 +1,6 @@
 <template>
     <div>  
         <Banner></Banner>
-        <Article></Article>
         <router-view></router-view>
     </div>
 </template>
