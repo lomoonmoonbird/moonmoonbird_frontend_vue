@@ -25,7 +25,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 img {
   height:100%;
   width: 100px;
@@ -33,6 +33,13 @@ img {
 }
 .application--wrap {
   min-height: 100px;
+}
+
+@media screen and (max-width: 760px) {
+   img {
+    height: 20px;
+    border-image-repeat: stretch
+  }
 }
 </style>
 
