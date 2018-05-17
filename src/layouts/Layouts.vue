@@ -1,12 +1,11 @@
 <template>
-  
+  <!-- :mini-variant.sync="mini" -->
   <v-app id="inspire">
     <v-navigation-drawer
       hide-overlay
       fixed
       temporary
-      :mini-variant.sync="mini"
-
+      
       :value="true"
       :clipped="$vuetify.breakpoint.mdAndUp"
       :disable-resize-watcher="true"
@@ -14,7 +13,7 @@
       v-model="drawer"
     >
       <v-list dense>
-        <template v-for="item in items">
+        <template v-for="item in navigations">
           <v-layout
             row
             v-if="item.heading"
@@ -30,16 +29,15 @@
               <a href="#!" class="body-2 black--text">EDIT</a>
             </v-flex>
           </v-layout>
-      
           <v-list-tile v-else @click="" :key="item.text">
-            <v-list-tile-action>
+            <!-- <v-list-tile-action>
               
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
+              <v-icon>{{item.en_name}}</v-icon>
+            </v-list-tile-action> -->
             
             <v-list-tile-content>
               <v-list-tile-title>
-                <router-link class="nav" :to="'/easeheart'">{{ item.text }}</router-link>
+                <router-link class="nav" :to="{name: 'navigation', params: {en_name: item.en_name}}">{{ item.zh_name }}        ----       {{item.desc}}</router-link>
               </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
@@ -47,7 +45,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
-      color="blue darken-3"
+      color="blak darken-3"
       dark
       app
       :clipped-left="$vuetify.breakpoint.mdAndUp"
@@ -55,7 +53,7 @@
     >
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <span ><router-link class="index" :to="'/'">Guan Ling</router-link></span>
+        <span ><router-link class="index" :to="'/'">MoonMoonBird</router-link></span>
       </v-toolbar-title>
       <v-text-field
         flat
@@ -76,14 +74,14 @@
     <v-content class="content">
       <v-container  >
         <!-- <v-layout justify-center align-center> -->
-            <router-view></router-view>
+            <router-view :key="$route.fullPath"></router-view>
 
         <!-- </v-layout> -->
         
       </v-container>
       
     </v-content>
-    <v-footer height="auto" class="bo blue darken-3">
+    <v-footer height="auto" class="bo black darken-3">
         <v-layout row wrap justify-center>
           <!-- <v-btn
             color="white"
@@ -94,7 +92,7 @@
             {{ link }}
           </v-btn> -->
           <v-flex xs12 py-3 text-xs-center white--text>
-            &copy;2016 — 2018 <strong>psyguanling.com</strong>
+            &copy;2015 — 2018 <strong>moonmoonbird.com</strong>
           </v-flex>
         </v-layout>
       </v-footer> 
@@ -102,20 +100,29 @@
 </template>
 
 <script>
+    import { mapGetters, mapActions } from 'vuex'
     export default {
         name:"Layouts",
         data: () => ({
           mini: true,
-      dialog: false,
-      drawer: null,
-      items: [
-        { icon: 'history', text: '静心' },
-       
-      ]
-    }),
-    props: {
-      source: String
-    }
+          dialog: false,
+          drawer: null,
+          items: [
+            // { icon: 'history', text: '静心' },
+          
+          ]
+        }),
+        computed: mapGetters({
+                navigations: 'getNavigation'
+                
+            }),
+        created () {
+            this.$store.dispatch('getNavigationData')
+            
+        },
+        props: {
+          source: String
+        }
     }
 </script>
 

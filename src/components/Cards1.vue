@@ -2,13 +2,11 @@
 <v-container fluid grid-list-md fill-height>
   <v-layout column>
     <v-flex xs12 sm6>
-      <!-- <v-card > -->
-        <!-- <v-container fluid grid-list-md> -->
           <v-layout row wrap>
             <v-flex
-              v-for="card in cards"
+              v-for="card in indexdata"
               v-bind="{ [`xs${card.flex}`]: true }"
-              :key="card.id"
+              :key="card.title"
             >
             <v-card>
         <v-card-media
@@ -17,7 +15,6 @@
           height="300px"
         >
         </v-card-media>
-        <!-- <img :src="card.thumbnail" alt="" class="thumbnail"> -->
         <v-card-title primary-title>
           <div>
             <div class=""><router-link class="nav" :to="{name: 'threaddetail', params: {hash_url: card.hash_url}}">{{card.title}}</router-link></div>
@@ -27,20 +24,15 @@
         <v-card-actions >
           <v-btn flat v-for="tag in card.tags" :key="tag">{{tag}}</v-btn>
           <v-spacer></v-spacer>
-          <!-- <v-btn icon @click.native="show = !show">
-            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-          </v-btn> -->
         </v-card-actions>
-        <!-- <v-slide-y-transition>
+        <v-slide-y-transition>
           <v-card-text v-show="show">
             {{card.desc}}
           </v-card-text>
-        </v-slide-y-transition> -->
+        </v-slide-y-transition>
       </v-card>
             </v-flex>
           </v-layout>
-        <!-- </v-container> -->
-      <!-- </v-card> -->
     </v-flex>
   </v-layout>
 </v-container>
@@ -51,31 +43,6 @@
   
   export default {
     name: "Cards",
-    props: {
-      cards: {
-        type: Array,
-        default(){
-          return []
-        }
-      }
-    },
-    // data: () => ({
-    //   cards: false
-    // }),
-    // methods: {
-
-    // },
-    // computed: mapGetters({
-    //       indexdata: 'getIndexData'
-            
-    //     }),
-    // created () {
-    //     this.$store.dispatch('getIndexData')
-        
-    // },
-    // beforeMount(){
-    //   console.log('mount')
-    // }
   }
 </script>
 
@@ -83,13 +50,5 @@
   .nav {
     text-decoration: none;
   }
-  /* .thumbnail {
-    height: 450px;
-    width: 100%;
-  }
-  @media screen and (max-width: 760px) {
-    .thumbnail {
-      height: 250px;
-    }
-  } */
+
 </style>

@@ -35,8 +35,7 @@
           IndexService
         },
         created() {
-          console.log('####')
-          console.log(IndexService.getArticle())
+
         },
         data () {
           return {

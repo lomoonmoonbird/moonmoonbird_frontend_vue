@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-carousel>
+    <v-carousel class="slide">
       <v-carousel-item v-for="(item,i) in items" v-bind:src="item.src" :key="i"></v-carousel-item>
     </v-carousel>
   </v-app>
@@ -26,13 +26,16 @@
 </script>
 
 <style scoped>
+.slide {
+  /* margin-bottom: -2500px; */
+}
 img {
   height:100%;
   width: 100px;
   border-image-repeat: stretch
 }
 .application--wrap {
-  min-height: 100px;
+  /* min-height: 100px; */
 }
 
 @media screen and (max-width: 760px) {

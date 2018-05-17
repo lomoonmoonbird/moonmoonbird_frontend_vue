@@ -5,6 +5,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+  mode:"history",  
   routes: [
     {
       path: '/',
@@ -15,16 +16,30 @@ export default new Router({
           path: '',
           name: 'home',
           component: () => import("@/views/Home")
-        },
+        }
+      ]
+    },
+    {
+      path: '/',
+      name: 'navigation',
+      component: () => import('@/layouts/Layouts'),
+      children: [
         {
-          path: '/article',
-          name: 'article',
-          component: () => import("@/components/Article")
-        },
+          path: '/:en_name',
+          name: 'navigation',
+          component: () => import("@/views/ThreadList")
+        }
+      ]
+    },
+    {
+      path: '/posts',
+      name: 'threads',
+      component: () => import('@/layouts/Layouts'),
+      children: [
         {
-          path: '/easeheart',
-          name: 'easeheart',
-          component: () => import("@/views/EaseHeart")
+          path: 'threads/:hash_url',
+          name: 'threaddetail',
+          component: () => import("@/views/ThreadDetail")
         }
       ]
     },
@@ -32,11 +47,6 @@ export default new Router({
       path: '/chat',
       name: 'chatroom',
       component: ()=>import("@/components/ChatRoom")
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: () => import("@/components/test")
     }
     
   ]

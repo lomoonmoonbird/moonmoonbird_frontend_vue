@@ -12,7 +12,7 @@ module.exports = {
       // 在任意目录下require('components/example') 相当于require('项目根目录/src/components/example')
       components: path.join(root, 'src/components'),
       views: path.join(root, 'src/views'),
-      styles: path.join(root, 'src/styles'),
+      styles: path.join(root, 'src/assets'),
       store: path.join(root, 'src/store')
     },
     extensions: ['', '.js', '.vue'], // 引用js和vue文件可以省略后缀名

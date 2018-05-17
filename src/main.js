@@ -9,6 +9,8 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import {ApiService} from '@/services/base.service'
 import "babel-polyfill"
+require('./assets/css/prism.css')
+
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
