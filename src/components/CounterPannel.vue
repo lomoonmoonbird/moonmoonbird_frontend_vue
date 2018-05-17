@@ -4,7 +4,7 @@
       
     <v-layout row wrap>
       <v-flex xs12 sm12 class="part1">
-        <div class="info-box-3 bg-deep-purple" @click="like">
+        <div class="vote youzhong bg-deep-purple" @click="vote(1)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
@@ -13,7 +13,7 @@
                 <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">132</div>
             </div>
         </div>
-         <div class="info-box-3 bg-deep-purple" @click="like">
+         <div class="vote youqu bg-deep-purple" @click="vote(2)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
@@ -22,7 +22,7 @@
                 <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">32</div>
             </div>
         </div>
-         <div class="info-box-3 bg-deep-purple" @click="like">
+         <div class="vote youliao bg-deep-purple" @click="vote(3)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
@@ -31,7 +31,7 @@
                 <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">21</div>
             </div>
         </div>
-        <div class="info-box-3 bg-deep-purple">
+        <div class="vote youqing bg-deep-purple" @click="vote(4)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
@@ -40,7 +40,7 @@
                 <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">66</div>
             </div>
         </div>
-        <div class="info-box-3 bg-deep-purple">
+        <div class="vote youcai bg-deep-purple" @click="vote(5)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
@@ -54,6 +54,7 @@
       <v-flex xs12 sm12 >
         <v-list two-line>
             <template v-for="(item, index) in recommends">
+                <router-link class="link" :to="{name: 'threaddetail', params: {hash_url: item.hash_url}}">
               <v-subheader v-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
               <v-divider v-else-if="item.divider" :inset="item.inset" :key="index"></v-divider>
               <v-list-tile avatar v-else :key="item.title" @click="">
@@ -65,6 +66,7 @@
                   <v-list-tile-sub-title v-html="item.desc"></v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
+              </router-link>
             </template>
           </v-list>
       </v-flex>
@@ -93,19 +95,11 @@
         },
         data () {
           return {
-            items: [
-              { header: '推荐' },
-              { avatar: 'https://vuetifyjs.com/static/doc-images/lists/1.jpg', title: 'Brunch this weekend?', subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?" },
-            //   { divider: true, inset: true },
-              { avatar: 'https://vuetifyjs.com/static/doc-images/lists/2.jpg', title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>', subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend." },
-            //   { divider: true, inset: true },
-              { avatar: 'https://vuetifyjs.com/static/doc-images/lists/3.jpg', title: 'Oui oui', subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?" }
-            ]
           }
         },
         methods: {
-          like: function(event){
-            console.log('like')
+          vote: function(voteType){
+            console.log(voteType)
           }
         }
     }
@@ -116,7 +110,12 @@
     background-color: #ffffff;
 }
 
-.info-box-3 {
+.link {
+    text-decoration: none;
+    color: #000;
+}
+
+.vote {
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2);
     height: 80px;
     display: flex;
@@ -133,29 +132,121 @@
     color: rgba(0, 0, 0, 1);
     opacity: .8;
 }
-.info-box-3 .icon {
+.youzhong .icon {
     position: absolute;
     right: 10px;
     bottom: 2px;
     text-align: center;
 }
-.info-box-3 .icon i {
-    color: rgba(0, 0, 0, 0.15);
+.youzhong .icon i {
+    color: #E53935;
     font-size: 60px;
 }
-.info-box-3 .content {
+
+.youqu .icon {
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+    text-align: center;
+}
+.youqu .icon i {
+    color: #F57C00;
+    font-size: 60px;
+}
+
+.youliao .icon {
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+    text-align: center;
+}
+.youliao .icon i {
+    color: #5E35B1;
+    font-size: 60px;
+}
+
+.youqing .icon {
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+    text-align: center;
+}
+.youqing .icon i {
+    color: #43A047;
+    font-size: 60px;
+}
+
+.youcai .icon {
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+    text-align: center;
+}
+.youcai .icon i {
+    color: #1E88E5;
+    font-size: 60px;
+}
+.vote .content {
     display: inline-block;
     padding: 7px 16px;
 }
-.info-box-3 .content .text {
+.youzhong .content .text {
     font-size: 13px;
     margin-top: 11px;
-    color: rgba(187, 12, 12, 1);
+    color: #E53935;
 }
-.info-box-3 .content .number {
+.youzhong .content .number {
     font-weight: normal;
     font-size: 26px;
     margin-top: -4px;
-    color: rgba(187, 12, 12, 1);  
+    color: #E53935;  
+}
+
+.youqu .content .text {
+    font-size: 13px;
+    margin-top: 11px;
+    color: #F57C00;
+}
+.youqu .content .number {
+    font-weight: normal;
+    font-size: 26px;
+    margin-top: -4px;
+    color: #F57C00;  
+}
+
+.youliao .content .text {
+    font-size: 13px;
+    margin-top: 11px;
+    color: #5E35B1;
+}
+.youliao .content .number {
+    font-weight: normal;
+    font-size: 26px;
+    margin-top: -4px;
+    color: #5E35B1;  
+}
+
+.youqing .content .text {
+    font-size: 13px;
+    margin-top: 11px;
+    color: #43A047;
+}
+.youqing .content .number {
+    font-weight: normal;
+    font-size: 26px;
+    margin-top: -4px;
+    color: #43A047;  
+}
+
+.youcai .content .text {
+    font-size: 13px;
+    margin-top: 11px;
+    color: #1E88E5;
+}
+.youcai .content .number {
+    font-weight: normal;
+    font-size: 26px;
+    margin-top: -4px;
+    color: #1E88E5;  
 }
 </style>
