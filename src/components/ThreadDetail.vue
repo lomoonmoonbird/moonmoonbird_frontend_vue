@@ -10,7 +10,7 @@
                 </v-flex>
                 
                 <v-flex xs12 md4 class="context_right">
-                    <CounterPannels></CounterPannels>
+                    <CounterPannels :recommends="thread.recommends"></CounterPannels>
 
     
                     <!-- 此区域暂未开放 -->
@@ -57,7 +57,6 @@
         }),
         created () {
             window.scrollTo(0, 0);
-            console.log('cccccccccs')
             this.hash_url = this.$route.params.hash_url
             this.$store.dispatch('getThreadDetail', this.hash_url)
         },
