@@ -3,7 +3,7 @@
   <div class="mmb-profile">
   <div class="wrap">
       <div class="middle">
-          <span>moonmoonbird</span>
+          <span>constructing...</span>
       </div>
   </div>
 </div>
