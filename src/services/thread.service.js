@@ -13,6 +13,10 @@ export default  {
 
     getPageThread(category_id, time){
         return ApiService.getList(url.threadPaginationThread, category_id, time)
+    },
+
+    voteThread(thread_id, vote_type){
+        return ApiService.post(url.threadVote,  {thread_id:thread_id, vote_type:vote_type})
     }
 }
 

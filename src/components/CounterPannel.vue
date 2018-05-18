@@ -4,49 +4,54 @@
       
     <v-layout row wrap>
       <v-flex xs12 sm12 class="part1">
-        <div class="vote youzhong bg-deep-purple" @click="vote(1)">
+        <div class="vote youzhong bg-deep-purple" @click="vote(threadid,1)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
             <div class="content">
                 <div class="text" >有种</div>
-                <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">132</div>
+                <div class="number count-to" v-if="votes.youzhong">{{votes.youzhong}}</div>
+                <div class="number count-to" v-else>0</div>
             </div>
         </div>
-         <div class="vote youqu bg-deep-purple" @click="vote(2)">
+         <div class="vote youqu bg-deep-purple" @click="vote(threadid,2)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
             <div class="content">
                 <div class="text" >有趣</div>
-                <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">32</div>
+                <div class="number count-to" v-if="votes.youqu">{{votes.youqu}}</div>
+                <div class="number count-to" v-else>0</div>
             </div>
         </div>
-         <div class="vote youliao bg-deep-purple" @click="vote(3)">
+         <div class="vote youliao bg-deep-purple" @click="vote(threadid,3)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
             <div class="content">
                 <div class="text" >有料</div>
-                <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">21</div>
+                <div class="number count-to" v-if="votes.youliao">{{votes.youliao}}</div>
+                <div class="number count-to" v-else>0</div>
             </div>
         </div>
-        <div class="vote youqing bg-deep-purple" @click="vote(4)">
+        <div class="vote youqing bg-deep-purple" @click="vote(threadid,4)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
             <div class="content">
                 <div class="text">有情</div>
-                <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">66</div>
+                <div class="number count-to" v-if="votes.youqing">{{votes.youqing}}</div>
+                <div class="number count-to" v-else>0</div>
             </div>
         </div>
-        <div class="vote youcai bg-deep-purple" @click="vote(5)">
+        <div class="vote youcai bg-deep-purple" @click="vote(threadid,5)">
             <div class="icon">
                 <i class="material-icons">favorite</i>
             </div>
             <div class="content">
                 <div class="text">有才</div>
-                <div class="number count-to" data-from="0" data-to="1432" data-speed="1500" data-fresh-interval="20">751</div>
+                <div class="number count-to" v-if="votes.youcai">{{votes.youcai}}</div>
+                <div class="number count-to" v-else>0</div>
             </div>
         </div>
         
@@ -77,6 +82,7 @@
 
 
     <script>
+    import ThreadService from '@/services/thread.service'
     export default {
         name: "CounterPannels",
         components: {
@@ -91,6 +97,18 @@
                     default(){
                     return []
                 }
+            },
+            threadid: {
+                type: String,
+                default(){
+                    return ''
+                }
+            },
+            votes: {
+                type: Object,
+                default(){
+                    return {}
+                }
             }
         },
         data () {
@@ -98,8 +116,10 @@
           }
         },
         methods: {
-          vote: function(voteType){
-            console.log(voteType)
+          vote: function(threadId, voteType){
+            ThreadService.voteThread(threadId, voteType).then((data)=>{
+                console.log(data)
+            })
           }
         }
     }

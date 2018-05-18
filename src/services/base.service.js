@@ -20,6 +20,12 @@ export const ApiService = {
             throw new Error(`[RWV] ApiService ${error}`)
           })
       },
+    
+    post (resource, data = {}){
+      console.log("data",data)
+      return Vue.axios.post(`${resource}`,data, {headers:{"Content-Type":"application/json"}})
+      .catch((error)=>{throw new Error(`[RWV] ApiService ${error}`)})
+    },
 
     getDetail(resource, id=''){
       return Vue.axios

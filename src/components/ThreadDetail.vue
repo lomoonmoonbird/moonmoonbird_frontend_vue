@@ -10,7 +10,7 @@
                 </v-flex>
                 
                 <v-flex xs12 md4 class="context_right">
-                    <CounterPannels :recommends="thread.recommends"></CounterPannels>
+                    <CounterPannels :votes="thread.votes" :threadid="thread.id" :recommends="thread.recommends"></CounterPannels>
 
     
                     <!-- 此区域暂未开放 -->
