@@ -27,9 +27,9 @@ export const ApiService = {
       .catch((error)=>{throw new Error(`[RWV] ApiService ${error}`)})
     },
 
-    getDetail(resource, id=''){
+    getDetail(resource, id='',ticket=0){
       return Vue.axios
-          .get(`${resource}/${id}`)
+          .get(`${resource}/${id}`+'?ticket='+ticket)
           .catch((error) => {
             throw new Error(`[RWV] ApiService ${error}`)
           })

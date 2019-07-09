@@ -58,7 +58,8 @@
         created () {
             window.scrollTo(0, 0);
             this.hash_url = this.$route.params.hash_url
-            this.$store.dispatch('getThreadDetail', this.hash_url)
+            this.ticket = this.$route.query.ticket
+            this.$store.dispatch('getThreadDetail', {hash_url:this.hash_url, ticket:this.ticket})
         },
         beforeEnter: (to, from, next) => {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
