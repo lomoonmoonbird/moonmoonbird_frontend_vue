@@ -22,7 +22,7 @@ export const ApiService = {
       },
     
     post (resource, data = {}){
-      console.log("data",data)
+      console.log(data, "datadatadata")
       return Vue.axios.post(`${resource}`,data, {headers:{"Content-Type":"application/json"}})
       .catch((error)=>{throw new Error(`[RWV] ApiService ${error}`)})
     },
@@ -30,6 +30,13 @@ export const ApiService = {
     getDetail(resource, id='',ticket=0){
       return Vue.axios
           .get(`${resource}/${id}`+'?ticket='+ticket)
+          .catch((error) => {
+            throw new Error(`[RWV] ApiService ${error}`)
+          })
+    },
+    getAllByParameter(resource, hash_url){
+      return Vue.axios
+          .get(`${resource}`+'?hash_url='+hash_url)
           .catch((error) => {
             throw new Error(`[RWV] ApiService ${error}`)
           })

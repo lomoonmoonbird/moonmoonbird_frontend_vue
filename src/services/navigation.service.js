@@ -5,5 +5,6 @@ export default {
     getNavigation(cb)  {
         ApiService.get(url.navigation).then((data)=>{cb(data.data)})
     }
+    
 }
 

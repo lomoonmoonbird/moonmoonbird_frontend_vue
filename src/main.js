@@ -14,6 +14,7 @@ require('./assets/css/prism.css')
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
+Vue.use(require('vue-moment'));
 
 ApiService.init()
 /* eslint-disable no-new */
