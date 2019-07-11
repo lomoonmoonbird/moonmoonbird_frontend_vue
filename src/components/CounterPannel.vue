@@ -4,19 +4,30 @@
       
     <v-layout row wrap>
       <v-flex xs12 sm12 class="part1">
+        
         <div class="vote youzhong bg-deep-purple" @click="vote(threadid,1)">
             <div class="icon">
-                <i class="material-icons">favorite</i>
+               <transition name="youzhongfade" @after-leave="youzhongAfterLeave">
+                    <div v-if="youzhong_show">
+
+                            <i class="material-icons">favorite</i>
+                    </div>
+                </transition>
             </div>
             <div class="content">
                 <div class="text" >有种</div>
                 <div class="number count-to" v-if="votes.youzhong">{{votes.youzhong}}</div>
-                <div class="number count-to" v-else>0</div>
+                <div class="number count-to" v-else>{{!votes.youzhong ? 0: votes.youzhong}}</div>
             </div>
         </div>
          <div class="vote youqu bg-deep-purple" @click="vote(threadid,2)">
             <div class="icon">
-                <i class="material-icons">favorite</i>
+                <transition name="youqufade" @after-leave="youquAfterLeave">
+                    <div v-if="youqu_show">
+
+                            <i class="material-icons">favorite</i>
+                    </div>
+                </transition>
             </div>
             <div class="content">
                 <div class="text" >有趣</div>
@@ -26,7 +37,12 @@
         </div>
          <div class="vote youliao bg-deep-purple" @click="vote(threadid,3)">
             <div class="icon">
-                <i class="material-icons">favorite</i>
+                <transition name="youliaofade" @after-leave="youliaoAfterLeave">
+                    <div v-if="youliao_show">
+
+                            <i class="material-icons">favorite</i>
+                    </div>
+                </transition>
             </div>
             <div class="content">
                 <div class="text" >有料</div>
@@ -36,7 +52,12 @@
         </div>
         <div class="vote youqing bg-deep-purple" @click="vote(threadid,4)">
             <div class="icon">
-                <i class="material-icons">favorite</i>
+                <transition name="youqingfade" @after-leave="youqingAfterLeave">
+                    <div v-if="youqing_show">
+
+                            <i class="material-icons">favorite</i>
+                    </div>
+                </transition>
             </div>
             <div class="content">
                 <div class="text">有情</div>
@@ -46,7 +67,12 @@
         </div>
         <div class="vote youcai bg-deep-purple" @click="vote(threadid,5)">
             <div class="icon">
-                <i class="material-icons">favorite</i>
+                <transition name="youcaifade" @after-leave="youcaiAfterLeave">
+                    <div v-if="youcai_show">
+
+                            <i class="material-icons">favorite</i>
+                    </div>
+                </transition>
             </div>
             <div class="content">
                 <div class="text">有才</div>
@@ -86,7 +112,6 @@
     export default {
         name: "CounterPannels",
         components: {
-          
         },
         created() {
 
@@ -113,19 +138,176 @@
         },
         data () {
           return {
+              youzhong_show: true,
+              youqu_show: true,
+              youliao_show: true,
+              youqing_show: true,
+              youcai_show: true,
           }
         },
         methods: {
           vote: function(threadId, voteType){
             ThreadService.voteThread(threadId, voteType).then((data)=>{
-                console.log(data)
+                
+                let item = ""
+                if (voteType == 1){
+                    this.votes.youzhong = !this.votes.youzhong ? 0: this.votes.youzhong
+                    this.votes.youzhong += 1
+                    this.youzhong_show = false
+                }
+                else if (voteType == 2){
+                    this.votes.youqu = !this.votes.youqu ? 0: this.votes.youqu    
+                    this.votes.youqu += 1
+                    this.youqu_show = false
+                }
+                    
+                else if (voteType == 3){
+                    this.votes.youliao = !this.votes.youliao ? 0: this.votes.youliao
+                    this.votes.youliao += 1
+                    this.youliao_show = false
+                }
+                else if (voteType == 4){
+                    this.votes.youqing = !this.votes.youqing ? 0: this.votes.youqing
+                    this.votes.youqing += 1
+                    this.youqing_show = false
+                }
+                else if (voteType == 5){
+                    this.votes.youcai = !this.votes.youcai ? 0: this.votes.youcai
+                    this.votes.youcai += 1
+                    this.youcai_show = false
+                }
+
+                
             })
+          },
+          youzhongAfterLeave: function(el){
+              this.youzhong_show = true
+          },
+          youquAfterLeave: function(el){
+              this.youqu_show = true
+          },
+          youliaoAfterLeave: function(el){
+              this.youliao_show = true
+          },
+          youqingAfterLeave: function(el){
+              this.youqing_show = true
+          },
+          youcaiAfterLeave: function(el){
+              this.youcai_show = true
           }
         }
     }
 </script>
 
 <style scoped>
+
+@keyframes youzhongbounce-in {
+    0% {
+    transform: scale(0);
+    }
+    50% {
+    transform: scale(1.2);
+    }
+    100% {
+    transform: scale(1);
+    }
+}
+
+@keyframes youqubounce-in {
+    0% {
+    transform: scale(0);
+    }
+    50% {
+    transform: scale(1.2);
+    }
+    100% {
+    transform: scale(1);
+    }
+}
+
+@keyframes youliaobounce-in {
+    0% {
+    transform: scale(0);
+    }
+    50% {
+    transform: scale(1.2);
+    }
+    100% {
+    transform: scale(1);
+    }
+}
+
+@keyframes youqingbounce-in {
+    0% {
+    transform: scale(0);
+    }
+    50% {
+    transform: scale(1.2);
+    }
+    100% {
+    transform: scale(1);
+    }
+}
+
+@keyframes youcaibounce-in {
+    0% {
+    transform: scale(0);
+    }
+    50% {
+    transform: scale(1.2);
+    }
+    100% {
+    transform: scale(1);
+    }
+}
+
+.youzhongfade-enter-active {
+    transform-origin:  center;
+    animation: youzhongbounce-in 1s;
+}
+
+.youzhongfade-leave-active {
+    transform-origin:  center;
+    animation: youzhongbounce-in 1s reverse;
+}
+
+.youqufade-enter-active {
+    transform-origin:  center;
+    animation: youqubounce-in 1s;
+}
+
+.youqufade-leave-active {
+    transform-origin:  center;
+    animation: youqubounce-in 1s reverse;
+}
+.youliaofade-enter-active {
+    transform-origin:  center;
+    animation: youliaobounce-in 1s;
+}
+
+.youliaofade-leave-active {
+    transform-origin:  center;
+    animation: youliaobounce-in 1s reverse;
+}
+.youqingfade-enter-active {
+    transform-origin:  center;
+    animation: youqingbounce-in 1s;
+}
+
+.youqingfade-leave-active {
+    transform-origin:  center;
+    animation: youqingbounce-in 1s reverse;
+}
+.youcaifade-enter-active {
+    transform-origin:  center;
+    animation: youcaibounce-in 1s;
+}
+
+.youcaifade-leave-active {
+    transform-origin:  center;
+    animation: youcaibounce-in 1s reverse;
+}
+
 #inspire {
     background-color: #ffffff;
 }
