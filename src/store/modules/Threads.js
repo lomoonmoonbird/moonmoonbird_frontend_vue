@@ -14,10 +14,10 @@ const getters = {
 
 //actions
 const actions = {
-    getThreadDetail({commit}, {hash_url, ticket}){
+    getThreadDetail({commit}, {hash_url, ticket, source}){
         ThreadService.getDetail((thread) => {
             commit('setThread', thread.data.result)
-        }, hash_url,ticket)
+        }, hash_url,ticket, source)
         
     },
     getPaginationThreads({commit}, {category_id, time}) {
