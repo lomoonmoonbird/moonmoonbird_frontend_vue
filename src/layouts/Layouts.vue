@@ -92,7 +92,7 @@
             {{ link }}
           </v-btn> -->
           <v-flex xs12 py-3 text-xs-center white--text>
-            &copy;2014 — 2019 <strong>moonmoonbird.com</strong>
+            &copy;2014 — 2020 <strong>moonmoonbird.com</strong>
           </v-flex>
         </v-layout>
       </v-footer> 
