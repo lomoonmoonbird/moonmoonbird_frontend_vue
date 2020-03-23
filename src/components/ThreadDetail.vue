@@ -106,7 +106,8 @@
             window.scrollTo(0, 0);
             this.hash_url = this.$route.params.hash_url
             this.ticket = this.$route.query.ticket
-            this.$store.dispatch('getThreadDetail', {hash_url:this.hash_url, ticket:this.ticket})
+            this.source = this.$route.query.source
+            this.$store.dispatch('getThreadDetail', {hash_url:this.hash_url, ticket:this.ticket, source:this.source})
             this.$store.dispatch('getAllComments', {hash_url:this.hash_url})
         },
         beforeEnter: (to, from, next) => {
