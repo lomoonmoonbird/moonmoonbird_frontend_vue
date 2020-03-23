@@ -33,7 +33,7 @@
                
                 
                 <v-flex xs12 md4 class="context_right">
-                    <v-flex>
+                    <!-- <v-flex>
                         <aplayer float repeat theme="#4fffff" ref="player"
                                 :audio="{
                                     autoplay:true,
@@ -46,7 +46,7 @@
                                     pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
                                 }"
                                 />
-                    </v-flex>
+                    </v-flex> -->
                     <CounterPannels :votes="thread.votes" :threadid="thread.id" :recommends="thread.recommends"></CounterPannels>
 
     
