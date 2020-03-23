@@ -2,7 +2,6 @@
 
   <v-app id="inspire">
       
-    <v-layout row wrap>
       <v-flex xs12 sm12 class="part1">
         <div class="vote youzhong bg-deep-purple" @click="vote(threadid,1)">
             <div class="icon">
@@ -75,7 +74,6 @@
             </template>
           </v-list>
       </v-flex>
-    </v-layout>
   </v-app>
 </template>
 
@@ -126,6 +124,10 @@
 </script>
 
 <style scoped>
+.container.grid-list-md .layout .flex {
+    padding: 0;
+}
+
 #inspire {
     background-color: #ffffff;
 }
